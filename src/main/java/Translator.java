@@ -1,31 +1,25 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.sql.Driver;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-//сбор/обновление ссылок с сайта
-public class UrlCollector {
+public class Translator {
     private WebDriver webDriver;
     private WebDriver googleDriver;
     private WebDriver zenEditorDriver;
     private String googleLink;
     private String zenEditorLink;
 
-    public UrlCollector() {
+    public Translator() {
         webDriver = new FirefoxDriver();
         googleDriver = new FirefoxDriver();
         zenEditorDriver = new FirefoxDriver();
@@ -33,7 +27,7 @@ public class UrlCollector {
         zenEditorLink = "https://zen.yandex.ru/profile/editor/id/5f0b260a7bcdb04f18498795";
     }
 
-    public void tmp() throws IOException {
+    public void translate() throws IOException {
         Path fileLinks = Paths.get("links.txt");
         Set<String> oldLinks = new HashSet<>(Files.readAllLines(fileLinks));
         webDriver.get("https://zen.yandex.ru");
@@ -115,12 +109,5 @@ public class UrlCollector {
         webDriver.quit();
         googleDriver.quit();
     }
-
-    //System.setProperty("webdriver.gecko.driver", "C:\\Users\\dasha\\Downloads\\geckodriver-v0.26.0-win64\\geckodriver.exe");
-//    driver.findElement(By.cssSelector(".form-control-lg")).click();
-//    /html/body/div[2]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[5]/div[1]/div[1]/div/div/div/a
-//    /html/body/div[2]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[5]/div[1]/div[2]/div/div/div/a
-//    /html/body/div[2]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[5]/div[1]/div[3]/div/div/div/a
-//    /html/body/div[2]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[5]/div[2]/div[2]/div/div/div/a
 
 }
